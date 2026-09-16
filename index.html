@@ -6,13 +6,14 @@
     <title>Quiz Interactivo</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <script src="script.js" defer></script>
 </head>
 <body>
     <header>
         <img src="images/Logo.svg" alt="Logo" class="logo">
         <h1>QUIZ</h1> 
-        <div></div>
+        <button class="btn-header" id="btnEdit"><i class="bi bi-list"></i></button>
     </header>
     <main>
         <section class="pregunta-container">
@@ -21,9 +22,51 @@
         <section class="empezar-container" id="empzarContainer">
             <button class="btn btn-dark animate__animated animate__pulse animate__infinite" id="btnEmpezar">Empezar</button>
         </section> 
+
+        <section class="respuestas-container oculto" id="respuestasContainer">
+            <h1 id="puntaje">0/5</h1>
+        </section>
+
+        <section class="reiniciar-container oculto" id="reinicarContainer">
+            <button class="oculto" id="btnReiniciar">REINICIAR</button>
+        </section>
+
+        <section class="admin-container oculto" id="adminContainer">
+            <h2>Gestionar Preguntas</h2>
+            <div id="listaPreguntasAdmin" class="lista-admin"></div>
+
+            <form id="formPregunta" class="form-pregunta">
+                <h3 id="formTitulo">Agregar Nueva Pregunta</h3>
+                <input type="hidden" id="editIndex" value="-1">
+
+                <input type="text" id="inputPregunta" placeholder="Escribe la pregunta" required>
+                <div class="inputs-opciones">
+                    <input type="text" id="opcion0" placeholder="Opción 1" required>
+                    <input type="text" id="opcion1" placeholder="Opción 2" required>
+                    <input type="text" id="opcion2" placeholder="Opción 3" required>
+                    <input type="text" id="opcion3" placeholder="Opción 4" required>
+                </div>
+
+                <label for="selectCorrecta">Opción Correcta:</label>
+                <select id="selectCorrecta">
+                    <option value="0">Opción 1</option>
+                    <option value="1">Opción 2</option>
+                    <option value="2">Opción 3</option>
+                    <option value="3">Opción 4</option>
+                </select>
+
+                <div class="form-botones">
+                    <button type="submit" id="btnGuardarPregunta">Guardar Pregunta</button>
+                    <button type="button" id="btnCancelarEdit" class="oculto">Cancelar Edición</button>
+                </div>
+            </form>
+        </section>
+
+
     </main>
     <footer class="botones-container oculto" id="botonesNav">
-        <button id="btnAnterior">Volver</button>
+        <button id="btnAnterior">Volver</button>    
+        <div class="indicador-progreso" id="indicadorProgreso"></div>
         <button id="btnSiguiente">Siguiente</button>
     </footer>
 </body> 
